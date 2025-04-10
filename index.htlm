@@ -1,0 +1,44 @@
+def get_diet():
+    print("Welcome to the Diet Game!")
+    name = input("What's your name? ")
+    goal = input(f"Hi {name}, what's your goal? (lose weight / gain muscle / maintain): ").lower()
+    diet_type = input("Do you prefer (vegetarian / non-vegetarian / vegan)? ").lower()
+    allergies = input("Any allergies or foods to avoid? (type 'none' if none): ").lower()
+
+    print("\nAnalyzing your preferences...\n")
+
+    if goal == "lose weight":
+        if diet_type == "vegan":
+            diet = ["Oats with almond milk", "Quinoa salad", "Lentil soup", "Steamed veggies"]
+        elif diet_type == "vegetarian":
+            diet = ["Greek yogurt", "Vegetable stir fry", "Paneer salad", "Fruit smoothie"]
+        else:
+            diet = ["Grilled chicken", "Boiled eggs", "Salmon salad", "Steamed broccoli"]
+    elif goal == "gain muscle":
+        if diet_type == "vegan":
+            diet = ["Tofu scramble", "Vegan protein shake", "Chickpea stew", "Sweet potatoes"]
+        elif diet_type == "vegetarian":
+            diet = ["Eggs and toast", "Cottage cheese", "Lentil curry", "Protein smoothie"]
+        else:
+            diet = ["Steak and eggs", "Grilled fish", "Chicken rice bowl", "Protein shake"]
+    else:  # maintain
+        if diet_type == "vegan":
+            diet = ["Fruit bowl", "Avocado toast", "Bean chili", "Veggie wrap"]
+        elif diet_type == "vegetarian":
+            diet = ["Oatmeal", "Vegetable sandwich", "Pasta primavera", "Milk and nuts"]
+        else:
+            diet = ["Tuna sandwich", "Chicken wrap", "Egg salad", "Grilled veggies"]
+
+    # Filter out any foods that include allergies
+    if allergies != "none":
+        filtered_diet = [item for item in diet if allergies not in item.lower()]
+    else:
+        filtered_diet = diet
+
+    print(f"\n{name}, based on your input, here's a sample diet plan for you:")
+    for meal in filtered_diet:
+        print(f"- {meal}")
+
+    print("\nStay healthy!")
+
+get_diet()
